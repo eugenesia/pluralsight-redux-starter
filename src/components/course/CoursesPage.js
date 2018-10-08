@@ -5,7 +5,7 @@ class CoursesPage extends React.Component {
     super(props, context);
 
     this.state = {
-      course: { title: null }
+      course: { title: '' }
     };
   }
 

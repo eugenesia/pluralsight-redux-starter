@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -19,7 +21,9 @@ class CoursesPage extends React.Component {
   }
 
   onClickSave() {
-    alert(`Saving ${this.state.course.title}`);
+    // Dispatch "create course" action.
+    // this.props.dispatch() auto-inserted by connect().
+    this.props.dispatch(courseActions.createCourse(this.state.course));
   }
 
   render() {
@@ -40,4 +44,12 @@ class CoursesPage extends React.Component {
   }
 }
 
-export default CoursesPage;
+// ownProps: Component's props. Can access routing-related props injected by
+//   React Router.
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses
+  };
+}
+
+export default connect(mapStateToProps)(CoursesPage);

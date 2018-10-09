@@ -8,6 +8,8 @@ export default function courseReducer(state = [], action) {
         // Create deep copy of action.course for immutability.
         Object.assign({}, action.course)
       ];
+    case types.LOAD_COURSES_SUCCESS:
+      return action.courses;
 
     default:
       return state;

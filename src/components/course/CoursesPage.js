@@ -49,6 +49,11 @@ class CoursesPage extends React.Component {
   }
 }
 
+CoursesPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  courses: PropTypes.array.isRequired
+};
+
 // ownProps: Component's props. Can access routing-related props injected by
 //   React Router.
 function mapStateToProps(state, ownProps) {

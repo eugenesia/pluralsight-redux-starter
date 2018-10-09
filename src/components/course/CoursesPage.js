@@ -23,7 +23,7 @@ class CoursesPage extends React.Component {
   onClickSave() {
     // Dispatch "create course" action.
     // this.props.dispatch() auto-inserted by connect().
-    this.props.dispatch(courseActions.createCourse(this.state.course));
+    this.props.createCourse(this.state.course);
   }
 
   courseRow(course, index) {
@@ -62,4 +62,11 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(CoursesPage);
+// Determines what actions available in component.
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: course => dispatch(courseActions.createCourse(course))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);

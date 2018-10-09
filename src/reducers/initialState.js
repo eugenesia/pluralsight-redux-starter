@@ -1,4 +1,6 @@
 export default {
   authors: [],
-  courses: []
+  courses: [],
+  // Number of Ajax calls in progress.
+  numAjaxCallsInProgress: 0
 };

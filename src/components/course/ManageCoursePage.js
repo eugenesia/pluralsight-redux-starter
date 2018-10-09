@@ -16,6 +16,16 @@ class ManageCoursePage extends React.Component {
     this.saveCourse = this.saveCourse.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    // This might run when React thinks props has changed, even though it hasn't
+    // changed. So check course ID to make sure we need to re-render.
+    if (this.props.course.id !== nextProps.course.id) {
+      // Necessary to populate form when existing course is loaded directly.
+      // When Ajax call finishes, Redux state is passed down to props. We need
+      // to setState() to trigger a re-render.
+      this.setState({course: Object.assign({}, nextProps.course)});
+    }
+  }
   updateCourseState(event) {
     const field = event.target.name;
     // Avoid mutating state by using Object.assign().

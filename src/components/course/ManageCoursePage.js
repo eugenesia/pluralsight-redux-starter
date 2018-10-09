@@ -5,18 +5,29 @@ import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 
 class ManageCoursesPage extends React.Component {
-   constructor(props, context) {
-     super(props, context);
-     this.state = {
-       course: Object.assign({}, props.course),
-       errors: {}
-     };
-   }
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      course: Object.assign({}, props.course),
+      errors: {}
+    };
+
+    this.updateCourseState = this.updateCourseState.bind(this);
+  }
+
+  updateCourseState(event) {
+    const field = event.target.name;
+    // Avoid mutating state by using Object.assign().
+    let course = Object.assign({}, this.state.course);
+    course[field] = event.target.value;
+    return this.setState({course: course});
+  }
 
   render() {
     return (
       <CourseForm
         allAuthors={this.props.authors}
+        onChange={this.updateCourseState}
         course={this.state.course}
         errors={this.state.errors}
       />

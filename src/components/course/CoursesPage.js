@@ -53,8 +53,8 @@ class CoursesPage extends React.Component {
 CoursesPage.propTypes = {
   // No longer injected by connect() as mapDispatchToProps provided.
   // dispatch: PropTypes.func.isRequired,
-  actions: PropTypes.array.isRequired,
-  createCourse: PropTypes.func.isRequired
+  courses: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 // ownProps: Component's props. Can access routing-related props injected by

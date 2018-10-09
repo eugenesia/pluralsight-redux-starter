@@ -43,7 +43,12 @@ class ManageCoursePage extends React.Component {
     // i.e. courseApi.saveCourse() which is a Promise.
     // See https://github.com/reduxjs/redux/issues/1676#issuecomment-215413478
     this.props.actions.saveCourse(this.state.course)
-      .then(() => this.redirect());
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        // Ajax call failed, no longer saving.
+        this.setState({saving: false});
+      });
   }
 
   redirect() {

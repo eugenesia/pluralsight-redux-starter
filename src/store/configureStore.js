@@ -3,6 +3,7 @@
 import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import thunk from 'redux-thunk';
 
 // initialState might be provided by server-side rendering.
 export default function configureStore(initialState) {
@@ -10,6 +11,6 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     // Enhance the store with middleware.
-    applyMiddleware(reduxImmutableStateInvariant())
+    applyMiddleware(thunk, reduxImmutableStateInvariant())
   );
 }

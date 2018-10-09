@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 
-class ManageCoursesPage extends React.Component {
+class ManageCoursePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -42,7 +42,7 @@ class ManageCoursesPage extends React.Component {
   }
 }
 
-ManageCoursesPage.propTypes = {
+ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
@@ -70,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);

@@ -68,7 +68,8 @@ function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id;
 
   let course = {id: '', watchHref:'', title: '', authorId: '', length: '', category: ''};
-  if (courseId) {
+  // On initial load, state.course is empty as waiting for Ajax call.
+  if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
 

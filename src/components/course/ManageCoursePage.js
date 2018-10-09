@@ -36,7 +36,14 @@ class ManageCoursePage extends React.Component {
 
   saveCourse(event) {
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    // actions.saveCourse() thunk returns the value of the inner function,
+    // i.e. courseApi.saveCourse() which is a Promise.
+    // See https://github.com/reduxjs/redux/issues/1676#issuecomment-215413478
+    this.props.actions.saveCourse(this.state.course)
+      .then(() => this.redirect());
+  }
+
+  redirect() {
     // Redirect to courses index page.
     this.context.router.push('/courses');
   }
